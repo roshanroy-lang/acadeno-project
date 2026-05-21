@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+</head>
+
+<body>
+
+
+  <center>
+    <h2>Dashboard</h2>
+  </center>
+
+  <div>
+
+    <h1>Welcome {{ user.username }}</h1>
+    <h3>Your To Do List</h3>
+
+  </div>
+
+  <form method="POST">
+        {% csrf_token %}
+        <label>Enter to do tasks: <input type=" text" name="task"></label><br>
+    <br>
+    <button type="submit">Add Task</button>
+    <button>
+      <a href="{% url 'logout' %}">logout</a>
+    </button>
+   
+  </form>
+
+
+  <h2>Your Tasks</h2>
+  <ul>
+    {% for task in c %}
+    <li>{{ task.task }} </li>
+    <button type="reset"><a href="{% url 'delete' task.id %}">delete</a></button>
+    <button type="update"><a href="{% url 'update' task.id %}">update</a></button>
+    {% empty %}
+    <li>No tasks added yet.</li>
+    {% endfor %}
+  </ul>
+
+
+</body>
+
+</html>
