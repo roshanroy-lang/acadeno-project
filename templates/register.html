@@ -3,10 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <title>Register Page</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+.register-container form {
+  flex-grow: 1;
+}
+
+.register-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.register-container input:focus {
+  border-color: #74ebd5;
+  outline: none;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.register-container button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ACB6E5, #74ebd5);
+}
+
+.register-container .login-link {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.register-container .login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-container .login-link a:hover {
+  text-decoration: underline;
+}
+
+</style>
+
   
 
 </head>
-<body>
+<!-- <body>
   <h2>Register</h2>
   <form action="/register/" method="post">
     {% csrf_token %}
@@ -19,5 +113,26 @@
     <button type="submit">Register</button>
   </form>
   <p>Already have an account? <a href="/login/">Login</a></p>
+</body> -->
+
+<body>
+  <div class="register-container">
+    <h2>Register</h2>
+    <form action="/register/" method="post">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <div class="login-link">
+      <p>Already registered?</p>
+      <a href="/login/">Login</a>
+    </div>
+  </div>
 </body>
+
 </html>
