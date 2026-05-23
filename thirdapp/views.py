@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Task
+from django.contrib import messages
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def login_page(request):
         if c:
             login(request,c)
             return redirect('dashboard')
-
+        else:
+            messages.error(request, 'Invalid username or password')
     return render(request, 'login.html')
 
 
